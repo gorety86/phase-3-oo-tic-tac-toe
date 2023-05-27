@@ -55,13 +55,13 @@ class TicTacToe
       move(index, current_player)
       display_board
     else
-      return turn
+       turn
     end
   end
 
   def won?
     WIN_COMBINATIONS.each do |win_comb|
-      if [@board[win_comb[0]], @board[win_comb[1]], @board[win_comb[2]]].uniq = ['x'] || ['o']
+      if [@board[win_comb[0]], @board[win_comb[1]], @board[win_comb[2]]].uniq.length == 1 && @board[win_comb[0]] != ' '
         return win_comb
       end
     end
