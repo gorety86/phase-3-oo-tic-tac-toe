@@ -47,17 +47,19 @@ class TicTacToe
   end
 
   def turn
+    puts "Please enter a number (1-9):"
     input = gets
-    count unless (1..9).include?(input.to_i)
     index = input_to_index(input)
 
     if valid_move?(index)
       move(index, current_player)
       display_board
     else
-       turn
+      puts "Invalid move. Please try again."
+      turn
     end
   end
+
 
   def won?
     WIN_COMBINATIONS.each do |win_comb|
@@ -81,10 +83,11 @@ class TicTacToe
   end
 
   def winner
-    if won?
-      current_player == 'x' ? 'o' : 'x'
+    if win_comb = won?
+      @board[win_comb[0]]
     end
   end
+
 
   def play
     until over?
